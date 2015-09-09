@@ -1,16 +1,22 @@
 # Ang Google Services
 
-![Google Map icon]()
+![Google Map icon](https://github.com/khalednobani/ang-google-services/blob/master/assets/img/google-map-icon.png?raw=true)
 
 ## Overview
 
 **ang-google-services**, Consuming google's APIs services
 
 
-### Features
+## Features
 
-* Search places nearby specific location
-* Add markers into the map
+1. Search places nearby specific location
+2. Add markers into the map
+
+## Screenshots
+
+### Demo #1
+
+![Demo 1](https://github.com/khalednobani/ang-google-services/blob/master/assets/img/1.%20Demo%20%231.png?raw=true)
 
 
 ### Need help
