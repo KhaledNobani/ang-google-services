@@ -1,0 +1,25 @@
+{
+  "name": "ang-google-services",
+  "version": "1.0.0",
+  "description": "Consuming google's APIs services",
+  "main": "./src/module.js",
+  "keywords": [
+    "Google",
+    "APIs",
+    "Services",
+    "Geocoding",
+    "Places"
+  ],
+  "authors": [
+    "Khaled Nobani"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/khalednobani/ang-google-services",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

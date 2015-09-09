@@ -1,0 +1,26 @@
+{
+  "name": "ang-google-services",
+  "version": "1.0.0",
+  "description": "Consuming google's APIs services",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/khalednobani/ang-google-services.git"
+  },
+  "keywords": [
+    "Google",
+    "APIs",
+    "Services",
+    "Geocoding",
+    "Places"
+  ],
+  "author": "Khaled Nobani",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/khalednobani/ang-google-services/issues"
+  },
+  "homepage": "https://github.com/khalednobani/ang-google-services#readme"
+}
