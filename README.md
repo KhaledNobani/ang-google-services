@@ -11,6 +11,7 @@
 
 1. Search places nearby specific location
 2. Add markers into the map
+3. Get the names of the place for given coordinates
 
 ## Screenshots
 
