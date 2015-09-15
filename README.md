@@ -11,7 +11,8 @@
 
 1. Search places nearby specific location
 2. Add markers into the map
-3. Get the names of the place for given coordinates
+3. Get the names of the place for the given coordinates
+4. Get the list of address, and their coordinates for the given address
 
 ## Screenshots
 
@@ -19,6 +20,9 @@
 
 ![Demo 1](https://github.com/khalednobani/ang-google-services/blob/master/assets/img/1.%20Demo%20%231.png?raw=true)
 
+### Demo #3
+
+![Demo 1](https://github.com/khalednobani/ang-google-services/blob/master/assets/img/1.%20Demo%20%233.png?raw=true)
 
 ### Need help
 

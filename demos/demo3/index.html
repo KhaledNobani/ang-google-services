@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="main">
+    <head>
+        <meta charset="utf-8">
+        <title>Google APIs</title>
+
+        <!-- style -->
+        <!-- /style -->
+    </head>
+    <body>
+
+        <section ng-controller = "mainCtrl" name = "{{appName}}" ng-controller="MainCtrl">
+
+            <h1> Google API Services</h1>
+
+            <div class="main">
+                <div class="map" id="map" style="height: 600px"></div>
+            </div>
+            
+        </section>
+        
+        <section id="places"></section>
+
+        <!-- scripts -->
+        <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+        <script src = "https://maps.googleapis.com/maps/api/js?key={{Your API Cde Ninja}}&libraries=places"></script>
+        <script src = "../../src/module.js"></script>
+        <script src = "../assets/js/demo3.module.js"></script>
+        <!-- /scripts -->
+
+    </body>
+</html>

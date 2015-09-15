@@ -17,6 +17,9 @@
             getCoords: function() {},
             getNames: function(options) {
                 return getLocationsName.call($Self, $GeocodeService, options, $q);   
+            },
+            getGeoCode: function(options) {
+                return getGeoCode.call($Self, $GeocodeService, options, $q);  
             }
             
         };
@@ -167,19 +170,42 @@
       */
     function getLocationsName($GeocodeService, options, $q) {
         
-        var $Deffered = $q.defer();
+        var $Defer = $q.defer();
         
         $GeocodeService.geocode({'location' : options['coords'] || {lat: null, lng: null } }, function(results, status) {
             
             if (status == $G.maps.GeocoderStatus.OK) {
-                $Deffered.resolve(results);
+                $Defer.resolve(results);
             } else {
-                $Deffered.resolve({error: { message: 'Failed to get the result' }});
+                $Defer.resolve({error: { message: 'Failed to get the result' }});
             }
             
         });
         
-        return $Deffered.promise;
+        return $Defer.promise;
+        
+    }
+    
+    /**
+      * Gets the list of address.
+      *
+      * @param {Object} options
+      */
+    function getGeoCode($GeocodeService, options, $q) {
+        
+        var $Defer = $q.defer();
+        
+        $GeocodeService.geocode({'address' : options['address'] || '' }, function(results, status) {
+            
+            if (status == $G.maps.GeocoderStatus.OK) {
+                $Defer.resolve(results);
+            } else {
+                $Defer.resolve(undefined);
+            }
+            
+        });
+        
+        return $Defer.promise;
         
     }
 
