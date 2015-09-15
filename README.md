@@ -22,7 +22,7 @@
 
 ### Demo #3
 
-![Demo 1](https://github.com/khalednobani/ang-google-services/blob/master/assets/img/1.%20Demo%20%233.png?raw=true)
+![Demo 3](https://github.com/khalednobani/ang-google-services/blob/master/assets/img/2.%20demo%20%233.png?raw=true)
 
 ### Need help
 
