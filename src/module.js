@@ -158,7 +158,6 @@
             location: options['location'] || { lat: null, lng: null },
             radius: parseFloat(options['radius']) || '0',
             types: options['types'] || []
-            
         };
         
     }
@@ -190,9 +189,9 @@
         $Map.placesservice.nearbySearch($Req, function(results, status) {
 
            if (status == $G.maps.GeocoderStatus.OK) {
-               $Deffered.resolve(results);
+               $Deffered.resolve(results, options);
            } else {
-               $Deffered.reject(results);
+               $Deffered.reject(results, options);
            }
 
         });
@@ -280,9 +279,9 @@
         $GeocodeService.geocode({'location' : options['coords'] || {lat: null, lng: null } }, function(results, status) {
             
             if (status == $G.maps.GeocoderStatus.OK) {
-                $Defer.resolve(results);
+                $Defer.resolve(results, options);
             } else {
-                $Defer.reject({error: status, message: 'Failed to get the result ' + status});
+                $Defer.reject({error: status, message: 'Failed to get the result ' + status}, options);
             }
             
         });
@@ -303,12 +302,12 @@
         $GeocodeService.geocode({'address' : options['address'] || '' }, function(results, status) {
             
             if (status == $G.maps.GeocoderStatus.OK) {
-                $Defer.resolve(results);
+                $Defer.resolve(results, options);
             } else {
                 $Defer.reject({
-                    error: status,
+                    status: status,
                     message: "There something wrong due to " + status
-                });
+                }, options);
             }
             
         });
@@ -399,9 +398,12 @@
                 $Defer.resolve({
                     response: response,
                     $Summary: $Summary
-                });
+                }, options);
             } else {
-                $Defer.reject(undefined);
+                $Defer.reject({
+                    status: status,
+                    message: "There something wrong " + status
+                }, options);
             }
         });
         
