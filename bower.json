@@ -1,6 +1,6 @@
 {
   "name": "ang-google-services",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Consuming google's APIs services",
   "main": "./src/module.js",
   "keywords": [

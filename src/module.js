@@ -282,7 +282,7 @@
             if (status == $G.maps.GeocoderStatus.OK) {
                 $Defer.resolve(results);
             } else {
-                $Defer.resolve({error: { message: 'Failed to get the result' }});
+                $Defer.reject({error: status, message: 'Failed to get the result ' + status});
             }
             
         });
@@ -305,7 +305,10 @@
             if (status == $G.maps.GeocoderStatus.OK) {
                 $Defer.resolve(results);
             } else {
-                $Defer.resolve(undefined);
+                $Defer.reject({
+                    error: status,
+                    message: "There something wrong due to " + status
+                });
             }
             
         });
