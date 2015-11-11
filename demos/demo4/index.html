@@ -11,7 +11,11 @@
 
         <section ng-controller = "mainCtrl" name = "{{appName}}" ng-controller="MainCtrl">
 
-            <h1> Google API Services</h1>
+            <h1>
+                Google API Services
+                <button class="button option btn" option="1">Option 1</button>
+                <button class="button option btn" option="2">Option 2</button>
+            </h1>
 
             <div class="main">
                 <div class="map" id="map" style="height: 600px"></div>
@@ -23,7 +27,8 @@
 
         <!-- scripts -->
         <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
-        <script src = "https://maps.googleapis.com/maps/api/js?key=Your API Key Ninja&libraries=places"></script>
+        <script src = "https://maps.googleapis.com/maps/api/js?key={{Your API KEY}}&libraries=places"></script>
+        <script src="../../bower_components/ang-google-maps/src/module.js"></script>
         <script src = "../../src/module.js"></script>
         <script src = "../assets/js/demo4.module.js"></script>
         <!-- /scripts -->
