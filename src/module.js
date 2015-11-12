@@ -123,14 +123,12 @@
         if (!$Map) return new Error("Should pass map object");
 
         var $PathPolyline = new $G.maps.Polyline({
-
                 path: $Paths,
                 geodesic: options['geodesic'] || true,
                 strokeColor: options['strokeColor'] || '#4285f4',
                 strokeOpacity: options['strokeOpacity'] || 0.4,
                 strokeWeight: options['strokeWeight'] || 2,
                 map: $Map
-
         });
 
         return $PathPolyline;
@@ -143,7 +141,7 @@
       */
     function removePolyline(polylineObj) {
         var $PolylineObj = polylineObj || undefined;
-        
+
         if ($PolylineObj) if (typeof $PolylineObj['setMap'] == 'function') $PolylineObj['setMap'](null);
     }
     
@@ -189,9 +187,10 @@
         $Map.placesservice.nearbySearch($Req, function(results, status) {
 
            if (status == $G.maps.GeocoderStatus.OK) {
+               results.$input = options;
                $Deffered.resolve(results, options);
            } else {
-               $Deffered.reject(results, options);
+               $Deffered.reject({ status: status, message: "There something wrong due to " + status, $input: options}, options);
            }
 
         });
@@ -277,13 +276,12 @@
         var $Defer = $q.defer();
         
         $GeocodeService.geocode({'location' : options['coords'] || {lat: null, lng: null } }, function(results, status) {
-            
             if (status == $G.maps.GeocoderStatus.OK) {
+                results.$input = options;
                 $Defer.resolve(results, options);
             } else {
-                $Defer.reject({error: status, message: 'Failed to get the result ' + status}, options);
-            }
-            
+                $Deffered.reject({ status: status, message: "There something wrong due to " + status, $input: options}, options);
+            }            
         });
         
         return $Defer.promise;
@@ -300,16 +298,16 @@
         var $Defer = $q.defer();
         
         $GeocodeService.geocode({'address' : options['address'] || '' }, function(results, status) {
-            
             if (status == $G.maps.GeocoderStatus.OK) {
+                results.$input = options;
                 $Defer.resolve(results, options);
             } else {
                 $Defer.reject({
                     status: status,
-                    message: "There something wrong due to " + status
+                    message: "There something wrong due to " + status,
+                    $input: options
                 }, options);
             }
-            
         });
         
         return $Defer.promise;
@@ -323,9 +321,7 @@
             
         
         for (var index = 0, length = $SeperatedField.length; index < length; index++) {
-        
             $ObjStr += '["' + $SeperatedField[index] + '"]';
-        
         }
 
         return objName + $ObjStr;
@@ -375,7 +371,6 @@
             avoidHighways: options['avoidHighways'] || false,
             avoidTolls: options['avoidTolls'] || false
         }, function(response, status) {
-            
             if (status == $G.maps.DistanceMatrixStatus.OK) {
                 var $Summary = mapReduceDistance(response.rows[0].elements || undefined, "distance.value", function(prevValue, value, $Summary) {
 
@@ -395,6 +390,7 @@
                     return $Summary;
 
             });
+                response.$input = options;
                 $Defer.resolve({
                     response: response,
                     $Summary: $Summary
@@ -402,9 +398,10 @@
             } else {
                 $Defer.reject({
                     status: status,
-                    message: "There something wrong " + status
+                    message: "There something wrong " + status,
+                    $input: options
                 }, options);
-            }
+            }            
         });
         
         return $Defer.promise;
